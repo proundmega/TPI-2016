@@ -1,0 +1,17 @@
+c:\users\sakshi\documents\visual studio 2012\Projects\ParcialTPI\ParcialTPI\bin\Debug\ParcialTPI.exe.config
+c:\users\sakshi\documents\visual studio 2012\Projects\ParcialTPI\ParcialTPI\bin\Debug\ParcialTPI.exe
+c:\users\sakshi\documents\visual studio 2012\Projects\ParcialTPI\ParcialTPI\bin\Debug\ParcialTPI.pdb
+c:\users\sakshi\documents\visual studio 2012\Projects\ParcialTPI\ParcialTPI\bin\Debug\websocket-sharp.dll
+c:\users\sakshi\documents\visual studio 2012\Projects\ParcialTPI\ParcialTPI\bin\Debug\websocket-sharp.xml
+c:\users\sakshi\documents\visual studio 2012\Projects\ParcialTPI\ParcialTPI\obj\Debug\ParcialTPI.csprojResolveAssemblyReference.cache
+c:\users\sakshi\documents\visual studio 2012\Projects\ParcialTPI\ParcialTPI\obj\Debug\ParcialTPI.csproj.GenerateResource.Cache
+c:\users\sakshi\documents\visual studio 2012\Projects\ParcialTPI\ParcialTPI\obj\Debug\ParcialTPI.exe
+c:\users\sakshi\documents\visual studio 2012\Projects\ParcialTPI\ParcialTPI\obj\Debug\ParcialTPI.pdb
+C:\Users\sakshi\Documents\Visual Studio 2012\Projects\ParcialTPI\ParcialTPI\bin\Debug\Newtonsoft.Json.dll
+C:\Users\sakshi\Documents\Visual Studio 2012\Projects\ParcialTPI\ParcialTPI\bin\Debug\Newtonsoft.Json.xml
+C:\Users\sakshi\documents\visual studio 2012\Projects\ParcialTPI\ParcialTPI\bin\Debug\RestSharp.dll
+C:\Users\sakshi\documents\visual studio 2012\Projects\ParcialTPI\ParcialTPI\bin\Debug\RestSharp.xml
+C:\Users\sakshi\documents\visual studio 2012\Projects\ParcialTPI\ParcialTPI\obj\Debug\ParcialTPI.vistas.Form1.resources
+C:\Users\sakshi\documents\visual studio 2012\Projects\ParcialTPI\ParcialTPI\obj\Debug\ParcialTPI.vistas.Properties.Resources.resources
+C:\Users\sakshi\documents\visual studio 2012\Projects\ParcialTPI\ParcialTPI\obj\Debug\ParcialTPI.vistas.vistas.FormSeleccionarExamen.resources
+C:\Users\sakshi\documents\visual studio 2012\Projects\ParcialTPI\ParcialTPI\obj\Debug\ParcialTPI.vistas.vistas.FormSeleccionarIngresoDetalle.resources

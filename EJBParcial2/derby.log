@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Wed Jun 08 19:54:37 CST 2016:
+ Iniciando instancia a816c00e-0155-32de-4a54-000000ce4110 de Derby, versión The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): 
+en el directorio de base de datos C:\Users\sakshi\AppData\Local\Temp\gfembed7687174937595564637tmp\lib\databases\ejbtimer con el cargador de clases sun.misc.Launcher$AppClassLoader@1a25848
+Cargado desde file:/C:/Users/sakshi/Desktop/Programacion/payara41/javadb/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_31-b13
+user.dir=C:\Users\sakshi\Documents\NetBeansProjects\EJBParcial2
+os.name=Windows 7
+os.arch=x86
+os.version=6.1
+derby.system.home=null
+Cargador de clases de base de datos iniciado - derby.database.classpath=''

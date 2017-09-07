@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                template="../WEB-INF/facelets/plantillas/contenido.xhtml"
+                xmlns:clinica="http://xmlns.jcp.org/jsf/composite/clinica"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:define name="tabla">
+        <p:dataTable
+            id="tblPaciente"
+            lazy="true"
+            paginator="true"
+            rows="#{frmPaciente.tamanioPagina}"
+            value="#{frmPaciente.modelo}"
+            var="r"
+            selectionMode="single"
+            selection="#{frmPaciente.registro}"
+            >
+            <p:ajax event="rowSelect" listener="#{frmPaciente.cambiarSeleccion}" update=":frmDetalle :#{p:component('pnlBotonesTop')}"/>
+            <p:column headerText="ID" filterBy="#{r.idPaciente}">
+                <h:outputText value="#{r.idPaciente}"/>
+            </p:column>
+            <p:column headerText="Nombres" filterBy="#{r.nombres}">
+                <h:outputText value="#{r.nombres}"/>
+            </p:column>
+            <p:column headerText="Apellidos" filterBy="#{r.apellidos}">
+                <h:outputText value="#{r.apellidos}"/>
+            </p:column>
+            <p:column headerText="Fecha de Nac." filterBy="#{r.fechaNacimiento}">
+                <f:facet name="filter">
+                    <p:calendar pattern="dd/MM/yyyy" mode="popup" onkeyup="PF('tblPaciente').filter();return true;"/>
+                </f:facet>
+                <h:outputText value="#{r.fechaNacimiento}">
+                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                </h:outputText>
+            </p:column>
+            <p:column headerText="Fecha de Defunc.">
+                <h:outputText value="#{r.fechaDefuncion}">}
+                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                </h:outputText>
+            </p:column>
+            <p:column headerText="Observaciones" filterBy="#{r.observaciones}">
+                <h:outputText value="#{r.observaciones}"/>
+            </p:column>
+        </p:dataTable>
+    </ui:define>
+
+    <ui:define name="controles1" id="controlesTop">
+        <clinica:botonessuperior id="btnTop" generador="#{frmExamen}" objeto="Examen" contenedor=":detalleRegistros :#{p:component('pnlBotonesTop')}"/>
+    </ui:define>
+
+    <ui:define name="detalle">
+        <h:panelGrid rendered="#{frmPaciente.mostrarDetalle}" columns="2">
+            <h:outputLabel value="ID"/>
+            <h:inputText value="#{frmPaciente.registro.idPaciente}" readonly="true" disabled="true"/>
+            <h:outputLabel value="Nombre"/>
+            <h:inputText value="#{frmPaciente.registro.nombres}" required="true"/>
+            <h:outputLabel value="Apellidos"/>
+            <h:inputText value="#{frmPaciente.registro.apellidos}" required="true"/>
+            <h:outputLabel value="Fecha de Nacimiento"/>
+            <p:calendar id="txtFechaNacimiento" value="#{frmPaciente.registro.fechaNacimiento}" pattern="dd/MM/yyyy" required="true"/>
+            <h:outputLabel value="Fecha de Defuncion"/>
+            <p:calendar id="txtFechaDefuncion" value="#{frmPaciente.registro.fechaDefuncion}" pattern="dd/MM/yyyy" required="false" mindate="#{frmPaciente.registro.fechaNacimiento}"/>
+            <h:outputLabel value="Observaciones"/>
+            <h:inputTextarea id="txtObservaciones" value="#{frmPaciente.registro.observaciones}" required="false" rows="3"/>
+
+        </h:panelGrid>
+    </ui:define>
+
+    <ui:define name="controles2">
+        <clinica:botonesinferiores generador="#{frmPaciente}" objeto="Paciente"/>
+    </ui:define>
+
+</ui:composition>
+
+

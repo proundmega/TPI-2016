@@ -1,0 +1,13 @@
+* {
+    margin-top: 0px;
+    box-sizing: border-box;
+}
+
+.header {
+    background-color: #CE7474;
+}
+
+.footer {
+    background-color: #0f0f0f;
+    color: white;
+}

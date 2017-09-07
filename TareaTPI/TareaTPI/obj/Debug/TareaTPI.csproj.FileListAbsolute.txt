@@ -1,0 +1,14 @@
+c:\users\sakshi\documents\visual studio 2012\Projects\TareaTPI\TareaTPI\bin\Debug\TareaTPI.exe.config
+c:\users\sakshi\documents\visual studio 2012\Projects\TareaTPI\TareaTPI\bin\Debug\TareaTPI.exe
+c:\users\sakshi\documents\visual studio 2012\Projects\TareaTPI\TareaTPI\bin\Debug\TareaTPI.pdb
+c:\users\sakshi\documents\visual studio 2012\Projects\TareaTPI\TareaTPI\bin\Debug\RestSharp.dll
+c:\users\sakshi\documents\visual studio 2012\Projects\TareaTPI\TareaTPI\bin\Debug\RestSharp.xml
+c:\users\sakshi\documents\visual studio 2012\Projects\TareaTPI\TareaTPI\obj\Debug\TareaTPI.Properties.Resources.resources
+c:\users\sakshi\documents\visual studio 2012\Projects\TareaTPI\TareaTPI\obj\Debug\TareaTPI.csproj.GenerateResource.Cache
+c:\users\sakshi\documents\visual studio 2012\Projects\TareaTPI\TareaTPI\obj\Debug\TareaTPI.exe
+c:\users\sakshi\documents\visual studio 2012\Projects\TareaTPI\TareaTPI\obj\Debug\TareaTPI.pdb
+C:\Users\sakshi\documents\visual studio 2012\Projects\TareaTPI\TareaTPI\obj\Debug\TareaTPI.Vistas.FormSeleccionarPaciente.resources
+C:\Users\sakshi\documents\visual studio 2012\Projects\TareaTPI\TareaTPI\obj\Debug\TareaTPI.Vistas.FormIngresoDetalle.resources
+C:\Users\sakshi\documents\visual studio 2012\Projects\TareaTPI\TareaTPI\obj\Debug\TareaTPI.Vistas.FormSeleccionaAsignacionPersonalCentroArea.resources
+C:\Users\sakshi\documents\visual studio 2012\Projects\TareaTPI\TareaTPI\obj\Debug\TareaTPI.Vistas.FormMain.resources
+C:\Users\sakshi\documents\visual studio 2012\Projects\TareaTPI\TareaTPI\obj\Debug\TareaTPI.csprojResolveAssemblyReference.cache

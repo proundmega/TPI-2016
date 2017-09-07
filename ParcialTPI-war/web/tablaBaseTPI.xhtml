@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:ps="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>Probando cosas</title>
+        <h:outputScript library="jquery" name="jquery.js"/>
+        <h:outputStylesheet library="bootstrap" name="/css/bootstrap-theme.min.css"/>
+        <h:outputStylesheet library="bootstrap" name="/css/bootstrap.min.css"/>
+    </h:head>
+    <h:body>
+        <h:messages />
+        <h:form id="frmTipoCentro">
+            <p:dataTable var="tipoCentro" value="#{frmTipoCentroPirata.tipoCentros}" selectionMode="single" selection="#{frmTipoCentroPirata.tipoSeleccionado}" rowKey="#{tipoCentro.idTipoCentro}">
+                <f:ajax event="rowSelect" render="frmAjaxTipoCentro" listener="#{frmTipoCentroPirata.setMostrarForm(true)}" execute="frmTipoCentro"/>
+                <p:column headerText="Nombre" filterBy="#{tipoCentro.nombre}">
+                    <h:outputText value="#{tipoCentro.nombre}" />
+                </p:column>
+                <p:column headerText="Activo">
+                    <h:outputText value="#{tipoCentro.activo}" />
+                </p:column>
+                <p:column headerText="Observaciones">
+                    <h:outputText value="#{tipoCentro.observaciones}" />
+                </p:column>
+            </p:dataTable>
+        </h:form>
+        <br />
+        <h:form id="frmAjaxTipoCentro">
+            <h1>Datos sobre el registro seleccionado</h1>
+            <p:panelGrid columns="2">
+                <p:outputLabel value="Nombre"/>
+                <p:inputText value="#{frmTipoCentroPirata.tipoSeleccionado.nombre}" ps:placeholder="Nombre" id="txtNombre"/>
+                <p:outputLabel value="Activo" />
+                <p:selectOneRadio value="#{frmTipoCentroPirata.tipoSeleccionado.activo}" >
+                    <f:selectItem itemLabel="Verdadero" itemValue="true"/>
+                    <f:selectItem itemLabel="False" itemValue="false"/>
+                </p:selectOneRadio>
+                <p:outputLabel value="Observaciones" />
+                <p:inputTextarea value="#{frmTipoCentroPirata.tipoSeleccionado.observaciones}" ps:placeholder="Observaciones"/>
+            </p:panelGrid>
+            <h:commandButton value="Guardar cambios" id="btnGuardar" action="#{frmTipoCentroPirata.guardarCambios()}" class="btn"/>
+            <h:commandButton value="Borrar registro" id="btnBorrar" actionListener="#{frmTipoCentroPirata.borrarRegistro(frmTipoCentro.tipoSeleccionado)}" class="btn"/>
+        </h:form>
+    </h:body>
+</html>
+

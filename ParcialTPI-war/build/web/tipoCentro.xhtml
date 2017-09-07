@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ps="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>Tipos de centro</title>
+        <h:outputScript library="jquery" name="jquery.js"/>
+        <h:outputStylesheet library="bootstrap" name="/css/bootstrap-theme.min.css"/>
+        <h:outputStylesheet library="bootstrap" name="/css/bootstrap.min.css"/>
+    </h:head>
+    <h:body>
+        <h1>
+            Centro de atencion general "Hijos de la Minerva"
+        </h1>
+        <h:form>
+            <p:dataTable
+                lazy="true"
+                paginator="true"
+                rows="10"
+                first="1"
+                value="#{frmTipoCentro.modelo}"
+                var="tipoCentro"
+                id="frmSelectTipoCentro"
+                selectionMode="single" 
+                selection="#{frmTipoCentro.elementoSeleccionado}"
+                rowKey="#{tipoCentro.idTipoCentro}"
+                >
+                <p:ajax event="rowSelect" update="frmAjaxTipoCentro"/>
+                <p:column headerText="Id" filterBy="#{tipoCentro.idTipoCentro}">
+                    <p:outputLabel value="#{tipoCentro.idTipoCentro}" />
+                </p:column>
+                <p:column headerText="Nombre" >
+                    <p:outputLabel value="#{tipoCentro.nombre}" />
+                </p:column>
+                <p:column headerText="Observaciones" >
+                    <p:outputLabel value="#{tipoCentro.observaciones}" />
+                </p:column>
+            </p:dataTable>
+        </h:form>
+        
+        <p:separator />
+        
+        <p:messages id="mensajes" autoUpdate="true" showDetail="true"/>
+        
+        <h:form id="frmAjaxTipoCentro" >
+            <h1>Datos seleccionados</h1>
+            <p:panelGrid columns="3">
+                <p:outputLabel value="Nombre" for="txtNombreTipoCentro" />
+                <p:inputText id="txtNombreTipoCentro" value="#{frmTipoCentro.elementoSeleccionado.nombre}" 
+                             ps:placeholder="Nombre" required="true" requiredMessage="Ingrese el nombre del tipo de centro"/>
+                <p:message for="txtNombreTipoCentro" />
+                <p:outputLabel value="¿Centro activo?" for="chkActivo" />
+                <p:selectOneRadio id="chkActivo" value="#{frmTipoCentro.elementoSeleccionado.activo}" 
+                                  required="true" requiredMessage="Seleccione si el tipo de centro esta activo o no">
+                    <f:selectItem itemLabel="Activo" itemValue="true"/>
+                    <f:selectItem itemLabel="Inactivo" itemValue="false"/>
+                </p:selectOneRadio>
+                <p:message for="chkActivo" showDetail="true" />
+            </p:panelGrid>
+            <h:commandButton value="Submit" action="tipoCentro.xhtml">
+                <p:ajax process="@form"  update="#{frmTipoCentro.printSeleccionado()}"/>
+            </h:commandButton>
+        </h:form>
+    </h:body>
+</html>
+

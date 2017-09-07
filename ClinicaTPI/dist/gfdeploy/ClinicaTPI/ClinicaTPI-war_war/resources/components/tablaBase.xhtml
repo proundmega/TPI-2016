@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <!-- INTERFACE -->
+    <cc:interface >
+        <cc:attribute name="controller" required="true" type="sv.edu.tpi.clinica.visual.controller.BaseController" />
+    </cc:interface>
+
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+        <p:dataTable
+            lazy="true"
+            paginator="true"
+            rows="10"
+            first="1"
+            value="#{cc.attrs.controller.modelo}"
+            var="objeto"
+            id="tblDatos"
+            selectionMode="single" 
+            selection="#{cc.attrs.controller.elementoSeleccionado}"
+            rowKey="#{cc.attrs.controller.getIdObjeto(objeto)}"
+            >
+            <p:ajax event="rowSelect" update="frmControles" listener="#{cc.attrs.controller.mostrarObjectoSeleccionado()}" />
+            <c:forEach var="propiedad" items="#{cc.attrs.controller.propiedadesTabla}">
+                <p:column headerText="#{propiedad}" >
+                    <h:outputText value="#{cc.attrs.controller.getPropiedad(objeto, propiedad)}" />
+                </p:column>
+            </c:forEach>
+        </p:dataTable>
+        <br/>
+    </cc:implementation>
+</html>

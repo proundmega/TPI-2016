@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                template="contenido.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:define name="tabla">
+        <p:dataTable
+            lazy="true"
+            paginator="true"
+            rows="#{frmEspecialidad.tamanioPagina}"
+            value="#{frmEspecialidad.modelo}"
+            var="r"
+            selectionMode="single"
+            selection="#{frmEspecialidad.registro}"
+            >
+            <p:ajax event="rowSelect" listener="#{frmEspecialidad.setMostrarDetalle(true)}" update=":frmDetalle "/>
+            <p:column headerText="ID" filterBy="#{r.idEspecialidad}">
+                <h:outputText value="#{r.idEspecialidad}"/>
+            </p:column>
+            <p:column headerText="Tipo">
+                <h:outputText value="#{r.idTipoEspecialidad.nombre}"/>
+            </p:column>
+            <p:column headerText="Nombre" filterBy="#{r.nombre}">
+                <h:outputText value="#{r.nombre}"/>
+            </p:column>
+            <p:column headerText="Estado">
+                <h:outputText value="#{r.activo?'Activo':'Inactivo'}"/>
+            </p:column>
+            <p:column headerText="Observaciones" filterBy="#{r.observaciones}">
+                <h:outputText value="#{r.observaciones}"/>
+            </p:column>
+        </p:dataTable>
+    </ui:define>
+
+    <ui:define name="controles1" id="controlesTop">
+    </ui:define>
+
+    <ui:define name="detalle">
+        <h:panelGrid rendered="#{frmEspecialidad.mostrarDetalle}" columns="2">
+            <h:outputLabel value="ID"/>
+            <h:inputText value="#{frmEspecialidad.registro.idEspecialidad}" readonly="true" disabled="true"/>
+            <h:outputLabel value="Nombre"/>
+            <h:inputText value="#{frmEspecialidad.registro.nombre}" required="true"/>
+            <h:outputLabel value="Tipo"/>
+            <h:panelGrid columns="2">
+                <h:outputText id="txtTipoEspecialidad" value="#{frmEspecialidad.registro.idTipoEspecialidad.nombre}"/>    
+                <h:commandButton value="Seleccionar Tipo" type="button" immediate="true" onclick="PF('dlgTipoEspecialidadPopup').show();
+                        return true;"/>
+            </h:panelGrid>
+            <h:outputLabel value="Activo"/>
+            <h:selectBooleanCheckbox id="chkActivo" value="#{frmEspecialidad.registro.activo}"/>
+            <h:outputLabel value="Observaciones"/>
+            <h:inputTextarea id="txtObservaciones" value="#{frmEspecialidad.registro.observaciones}" required="false" rows="3"/>
+
+        </h:panelGrid>
+    </ui:define>
+
+    <ui:define name="controles2">
+    </ui:define>
+
+    <ui:define name="extras">
+        <p:dialog id="dlgTipoEspecialidadPopup" closable="true" draggable="false" modal="true" 
+                  appendTo="@(body)"
+                  widgetVar="dlgTipoEspecialidad" header="Seleccione un Tipo de Especialidad">
+            <h:form id="frmTipoEspecialidadPopup">
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Tipo de Especialidad"/>
+                    <h:selectOneListbox id="lstTipoEspecialidad" value="#{frmEspecialidad.idTipoEspecialidadSeleccionado}" required="true">
+                        <f:selectItems value="#{frmEspecialidad.tipoEspecialidadList}"
+                                       var="t"
+                                       itemLabel="#{t.nombre}" itemValue="#{t.idTipoEspecialidad}"/>
+                    </h:selectOneListbox>
+                    <h:commandButton value="Seleccionar" type="button" id="btnSeleccionarTipoEspecialidad">
+                        <p:ajax process="@form" update=":frmDetalle:txtTipoEspecialidad" oncomplete="PF('dlgTipoEspecialidadPopup').hide();return true;"/>
+                    </h:commandButton>
+                </h:panelGrid>
+            </h:form>
+        </p:dialog>
+    </ui:define>
+</ui:composition>
+

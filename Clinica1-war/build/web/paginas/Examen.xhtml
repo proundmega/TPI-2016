@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor. 
+-->
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                template="contenido.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:define name="tabla">
+        <p:dataTable
+            id="tblPaciente"
+            lazy="true"
+            paginator="true"
+            rows="#{frmExamen.tamanioPagina}"
+            value="#{frmExamen.modelo}"
+            var="r"
+            selectionMode="single"
+            selection="#{frmExamen.registro}"
+            >
+            <p:ajax event="rowSelect" listener="#{frmExamen.setMostrarDetalle(true)}" update=":frmDetalle "/>
+            <p:column headerText="ID" filterBy="#{r.idExamen}">
+                <h:outputText value="#{r.idExamen}"/>
+            </p:column>
+            <p:column headerText="Nombre" filterBy="#{r.nombre}">
+                <h:outputText value="#{r.nombre}"/>
+            </p:column>
+            <p:column headerText="Tipo">
+                <h:outputText value="#{r.idTipoExamen.nombre}"/>
+            </p:column>
+            <p:column headerText="Estado">
+                <h:outputText value="#{r.activo?'Activo':'Inactivo'}"/>
+            </p:column>
+            <p:column headerText="Observaciones" filterBy="#{r.observaciones}">
+                <h:outputText value="#{r.observaciones}"/>
+            </p:column>
+            <p:column headerText="Descripción" filterBy="#{r.descripcion}">
+                <h:outputText value="#{r.descripcion}"/>
+            </p:column>
+        </p:dataTable>
+    </ui:define>
+
+    <ui:define name="controles1" id="controlesTop">
+        <p:commandButton value="Crear nuevo" action="Examen.xhtml">
+            <p:ajax event="click" listener="#{frmExamen.crearNuevoRegistro()}" update=":frmDetalle "/>
+        </p:commandButton>
+    </ui:define>
+
+    <ui:define name="detalle">
+        <h:panelGrid rendered="#{frmExamen.mostrarDetalle}" columns="2">
+            <h:outputLabel value="ID"/>
+            <h:inputText id="txtIdExamen" value="#{frmExamen.registro.idExamen}" required="true"/>
+            <h:outputLabel value="Nombre"/>
+            <h:inputText id="txtNombre" value="#{frmExamen.registro.nombre}" required="true"/>
+            <h:outputLabel value="Tipo"/>
+            <h:selectOneListbox id="lstTipoExamen" required="true" value="#{frmExamen.registro.idTipoExamen}" converter="omnifaces.SelectItemsConverter">
+                <f:selectItems value="#{frmExamen.tipoExamenList}"
+                               var="t" itemLabel="#{t.nombre}" itemValue="#{t}"/>
+            </h:selectOneListbox>
+            <h:outputLabel value="Activo"/>
+            <h:selectBooleanCheckbox id="chkActivo" value="#{frmExamen.registro.activo}"/>
+            <h:outputLabel value="Observaciones"/>
+            <h:inputTextarea id="txtObservaciones" value="#{frmExamen.registro.observaciones}" required="false" rows="3"/>
+            <h:outputLabel value="Descripción"/>
+            <h:inputTextarea id="txtDescripcion" value="#{frmExamen.registro.descripcion}" required="false" rows="3"/>
+        </h:panelGrid>
+    </ui:define>
+
+    <ui:define name="controles2">
+        <ui:fragment rendered="#{frmExamen.mostrarDetalle}">
+            <p:commandButton value="Borar" id="btnBorrar" action="Examen.xhtml">
+                <p:ajax process="@form"  update="#{frmExamen.borrarSeleccionado()}, :frmTabla" />
+            </p:commandButton>
+        </ui:fragment>
+    </ui:define>
+
+</ui:composition>
+
+
